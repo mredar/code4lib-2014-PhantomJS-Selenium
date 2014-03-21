@@ -39,7 +39,6 @@ Detailed plan:
     
     * Download selenium python package
 
-
 * Martin prep before talk: 
 
     * See if we can get two mics
@@ -157,7 +156,13 @@ Detailed plan:
 
     * [https://saucelabs.com/docs/connect](https://saucelabs.com/docs/connect)
 
-    * [Mark needs to fill in this section]
+    * Run sc.exe -u cdl-dsc -k <cdl-dsc-key>
+
+    * Run test "selenium-webdriver-sauce-connect-test.py"
+
+    * View results
+
+    * TODO: test code with status updated....
 
     * [Mark will have this all set up in advance, show users the things he configured, then demo the app kicking off locally, running on Sauce, the cool video produced]
 
