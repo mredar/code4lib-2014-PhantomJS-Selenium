@@ -1,0 +1,70 @@
+C:\Users\mark\Desktop>pushd code4lib-talk
+
+python -m SimpleHTTPServer 8000
+
+<open http://localhost:8000>
+
+<RECORD SELENIUM SESSION>
+
+C:\Users\mark\Desktop\code4lib-talk>python talk-test.py
+Traceback (most recent call last):
+  File "talk-test.py", line 1, in <module>
+    from selenium import webdriver
+ImportError: No module named selenium
+
+C:\Users\mark\Desktop\code4lib-talk>"\Program Files\Python2.7\Scripts\virtualenv
+.exe" venv
+New python executable in venv\Scripts\python.exe
+Installing setuptools................done.
+Installing pip...................done.
+
+C:\Users\mark\Desktop\code4lib-talk>pip install selenium
+'pip' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\mark\Desktop\code4lib-talk>.\venv\Scripts\activate.bat
+(venv) C:\Users\mark\Desktop\code4lib-talk>pip install selenium
+Downloading/unpacking selenium
+  Downloading selenium-2.40.0.tar.gz (2.5MB): 2.5MB downloaded
+  Running setup.py egg_info for package selenium
+
+Installing collected packages: selenium
+  Running setup.py install for selenium
+
+Successfully installed selenium
+Cleaning up...
+
+(venv) C:\Users\mark\Desktop\code4lib-talk>python talk-test.py
+.
+----------------------------------------------------------------------
+Ran 1 test in 9.659s
+
+OK
+
+(venv) C:\Users\mark\Desktop\code4lib-talk>gvim talk-test.py
+
+(venv) C:\Users\mark\Desktop\code4lib-talk>python talk-test.py
+F
+======================================================================
+FAIL: test_talk (__main__.TalkTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "talk-test.py", line 19, in test_talk
+    self.assertTrue(driver.find_element_by_css_selector("small.error").is_displa
+yed())
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 5.347s
+
+FAILED (failures=1)
+
+(venv) C:\Users\mark\Desktop\code4lib-talk>python talk-test.py
+.
+----------------------------------------------------------------------
+Ran 1 test in 12.406s
+
+OK
+
+(venv) C:\Users\mark\Desktop\code4lib-talk>
+
