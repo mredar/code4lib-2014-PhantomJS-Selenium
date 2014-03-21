@@ -40,6 +40,8 @@ Detailed plan:
     * Download selenium python package
     
     * Get pip install to use local file
+    
+    * Put raw Python test case, and modified Python test case into the git repo.
 
 * Martin prep before talk: 
 
