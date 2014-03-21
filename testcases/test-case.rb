@@ -29,9 +29,6 @@ class TestCase < Test::Unit::TestCase
     @driver.find_element(:id, "confirmPassword").clear
     @driver.find_element(:id, "confirmPassword").send_keys "12345678A%"
     @driver.find_element(:xpath, "//button[@type='submit']").click
-    @driver.find_element(:id, "radio2").click
-    @driver.find_element(:id, "checkbox1").click
-    @driver.find_element(:xpath, "//button[@type='submit']").click
   end
   
   def element_present?(how, what)

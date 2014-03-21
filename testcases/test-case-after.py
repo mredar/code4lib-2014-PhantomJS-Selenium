@@ -27,9 +27,6 @@ class TestCaseWebdriver(unittest.TestCase):
         driver.find_element_by_id("confirmPassword").clear()
         driver.find_element_by_id("confirmPassword").send_keys("12345678A%")
         driver.find_element_by_xpath("//button[@type='submit']").click()
-        driver.find_element_by_id("radio2").click()
-        driver.find_element_by_id("checkbox1").click()
-        driver.find_element_by_xpath("//button[@type='submit']").click()
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

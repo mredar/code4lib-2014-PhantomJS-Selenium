@@ -37,11 +37,21 @@ Detailed plan:
     
     * Uninstall Selenium IDE
     
-    * Download selenium python package
+    * <s>Download selenium python package</s>
     
-    * Get pip install to use local file
+    * <s>Get pip install to use local file</s> - pip install <local file path>
     
-    * Put raw Python test case, and modified Python test case into the git repo.
+    * <s>Put raw Python test case, and modified Python test case into the git repo.</s>
+
+    * get sauce IE test code ready and check into repository
+
+    * Immediately before talk: run sauce connnect in terminal
+    terminal at github root ready to run python -m SimpleHTTPServer
+    In Firefox, open localhost:8000, seleniumhq, saucelabs home
+    terminal in Desktop\code4lib ready to run the test files.
+    have gvim open to sauce labs test
+
+    So need 3 terminals and 3 webpages open
 
 * Martin prep before talk: 
 
