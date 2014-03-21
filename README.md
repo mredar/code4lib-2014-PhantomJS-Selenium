@@ -33,11 +33,13 @@ Detailed plan:
 
     * <s>Get rid of old venv, set up new venv: `"\Users\mark\Desktop\Program Files\Python2.7\Scripts\virtualenv" venv-selenium`</s>
 
-    * <s>Uninstall Selenium IDE</s>
-    
     * <s>Download Selenium IDE</s>
     
+    * Uninstall Selenium IDE
+    
     * Download selenium python package
+    
+    * Get pip install to use local file
 
 * Martin prep before talk: 
 
@@ -52,6 +54,8 @@ Detailed plan:
 `rm ~/bin/phantomjs`
 `rm –r ~/Downloads/phantomjs-1.9.7-macosx
 `
+
+    * Start Python server: `python -m SimpleHTTPServer`
 
 * 2 min – Martin talks intro, Mark installs software: Selenium, plus Selenium IDE
 
@@ -123,15 +127,9 @@ Detailed plan:
 
         * In the exported selenium test, change `${receiver}` to `@driver` (the ide has a bug).
 
-        * Change the `base_url` variable to match the local requirements
-
         * Run and watch Firefox go through it's paces
 
-        * The `@driver.find_element(:css, "small.error")` is the error message for the password
-
-        * `assert_equal @driver.find_element(:css, "small.error").text, "Passwords must be at least 8 characters with 1 capital letter, 1 number, and one special character."`
-
-        * [research how to do this with in rather than equals]
+        * Add code to check for errors before and after click. Like: `assert_true @driver.find_element(:css, "small.error").displayed?`
 
     * Install PhantomJS:
 
