@@ -29,11 +29,15 @@ Detailed plan:
 
 * Mark prep before talk:
 
-    * Put our little test page on a "Github page", including these notes.
+    * <s>Put our little test page on a "Github page", including these notes.</s>
 
-    * Get rid of old venv, set up new venv: `"\Users\mark\Desktop\Program Files\Python2.7\Scripts\virtualenv" venv-selenium`
+    * <s>Get rid of old venv, set up new venv: `"\Users\mark\Desktop\Program Files\Python2.7\Scripts\virtualenv" venv-selenium`</s>
 
-    * Uninstall Selenium IDE
+    * <s>Uninstall Selenium IDE</s>
+    
+    * <s>Download Selenium IDE</s>
+    
+    * Download selenium python package
 
 
 * Martin prep before talk: 
@@ -52,20 +56,18 @@ Detailed plan:
 
 * 2 min – Martin talks intro, Mark installs software: Selenium, plus Selenium IDE
 
-    * `.\venv-selenium\Scripts\activate.bat`
+    * Start sample app in Python from index.html directory:
+         python -m SimpleHTTPServer 8000
 
-    * `pip.exe install selenium` [quick if no network problems]
+    * Open sample app, locally:
+         http://localhost:8000/](http://localhost:8000)
+   
+    * talk about being able to test the text response being returned but not the javascript interaction
 
     * Start Firefox, go to [http://www.seleniumhq.org/download/](http://www.seleniumhq.org/download/) to show people. But install from local file, then restart Firefox.
 
 
 * 5 min – Show the little test app, write a test using Selenium IDE, run in Firefox, translate to Python, make it actually test something useful.
-
-    * Start sample app in Python:
-[need command for this] python -m SimpleHTTPServer (or something like that)
-
-    * Open sample app, locally:
-[need URL for this] [http://localhost:8080/foo](http://localhost:8080/foo) (or something like this)
 
     * Start recording in Selenium IDE
 
@@ -76,13 +78,24 @@ Detailed plan:
     * Export test case as Python -> unittest webdriver
 
     * Also export test case as Ruby -> unit::test
-
+    
+    * Run code, see fail due to lack of virtualenv
+    
+    * make venv, pip install local selenium
+    
     * Review code. 
 
         * Change self.baseURL to ""
 
         * Run test – it should work!
 [need command here] python selenium-webdriver-test.py (something like that)
+
+         * but didn't test (*assert*) anything
+         * add this before click - should fail `self.assertTrue(driver.find_element_by_css_selector("small.error").is_displayed())`
+
+    * Show the test failing first
+
+    * Fix failure
 
     * Add after the first click a check for validation:
 
@@ -92,16 +105,13 @@ Detailed plan:
 
         * [Try this with assertIn instead]
 
-        * `self.assertTrue(driver.find_element_by_css_selector("small.error").is_displayed())`
-
-    * Show the test failing first
-
-    * Fix failure
-
     * Before click, insert this:
 
         * `self.assertFalse(driver.find_element_by_css_selector("small.error").is_displayed())`
 
+    * After click, insert this:
+    `self.assertTrue(driver.find_element_by_css_selector("small.error").is_displayed())`
+    
     * Run again, show success
 
 
