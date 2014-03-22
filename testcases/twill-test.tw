@@ -1,0 +1,5 @@
+# run with twill-sh.exe on windows
+
+go http://localhost:8000
+code 200
+find '<small class="error">Passwords must be at least 8 characters with 1 capital letter, 1 number, and one special character.</small>'
