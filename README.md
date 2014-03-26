@@ -1,6 +1,26 @@
 **PhantomJS+Selenium: Easy Automated Testing of AJAX-y UIs**
 
-Code4lib 2014 presentation on testing web UI by [Martin Haye](http://github.com/martinhaye) and [Mark Redar](http://github.com/mredar).
+Code4lib 2014 presentation on testing web UIs by [Martin Haye](http://github.com/martinhaye) and [Mark Redar](http://github.com/mredar).
+
+Links related to this talk:
+
+* Short link to this page: __bit.ly/c4lphantom__
+
+* Long link to this page:  [https://github.com/mredar/code4lib-2014-PhantomJS-Selenium](https://github.com/mredar/code4lib-2014-PhantomJS-Selenium)
+
+* Selenium IDE for Firefox: [http://docs.seleniumhq.org/projects/ide](http://docs.seleniumhq.org/projects/ide)
+
+* Python webdriver for Selenium: `pip install selenium`, or visit [https://pypi.python.org/pypi/selenium](https://pypi.python.org/pypi/selenium)
+
+* Ruby webdriver for Selenium: `gem install selenium-webdriver`, or visit [http://rubygems.org/gems/selenium-webdriver](http://rubygems.org/gems/selenium-webdriver)
+
+* PhantomJS: [http://phantomjs.org/download.html](http://phantomjs.org/download.html)
+
+* Sauce Labs: [https://saucelabs.com/](https://saucelabs.com) 
+
+* Sauce Connect: [https://saucelabs.com/docs/connect](https://saucelabs.com/docs/connect)
+
+***Overview***
 
 Web user interfaces are demanding ever-more dynamism and polish, combining HTML5, AJAX, lots of CSS and jQuery (or ilk) to create autocomplete drop-downs, intelligent buttons, stylish alert dialogs, etc. How can you make automated tests for these highly complex and interactive UIs?
 
@@ -22,26 +42,12 @@ In this double-team live code talk, we’ll explain all that while we demonstrat
 
 * (Wifi permitting) Show the same tests running on a couple different browser/OS combinations on the server cloud at SauceLabs -- talking through a tunnel to the local firewalled application.
 
-Detailed plan:
+***Detailed plan for presenting***
 
 * Mark prep before talk:
 
-    * <s>Put our little test page on a "Github page", including these notes.</s>
-
-    * <s>Get rid of old venv, set up new venv: `"\Users\mark\Desktop\Program Files\Python2.7\Scripts\virtualenv" venv-selenium`</s>
-
-    * <s>Download Selenium IDE</s>
-    
     * Uninstall Selenium IDE
     
-    * <s>Download selenium python package</s>
-    
-    * <s>Get pip install to use local file</s> - pip install <local file path>
-    
-    * <s>Put raw Python test case, and modified Python test case into the git repo.</s>
-
-    * <s>get sauce IE test code ready and check into repository</s>
-
     * Immediately before talk:
         * run sauce connnect in terminal
         * terminal at github root ready to run python -m SimpleHTTPServer
@@ -50,10 +56,10 @@ Detailed plan:
         * have gvim open to sauce labs test
 
     * So need 3 terminals and 3 webpages open
+    
+    * Run sc.exe -u cdl-dsc -k <cdl-dsc-key>
 
 * Martin prep before talk: 
-
-    * Make a page of links that we can show at end of talk
 
     * Resolve merge diffs and push this stuff to github
 
@@ -62,7 +68,7 @@ Detailed plan:
         * Open phantomjs web page in Chrome
 
         * uninstall selenium Ruby bindings:
-    `sudo gem uninstall selenium-webdriver` [need different way in Windows]
+    `gem uninstall selenium-webdriver`
 
         * Reset the test directory - remove phantomjs.exe, test ruby and python
           files.
@@ -95,24 +101,24 @@ Detailed plan:
 
     * Also export test case as Ruby -> unit::test
     
-    * Run code, see fail due to lack of virtualenv
+    * Make a virtualenv (and talk about why and about pip freeze)
     
-    * make venv, pip install local selenium
+    * pip install local selenium
     
     * Review code. 
 
         * Run test - it should work!
-[need command here] python selenium-webdriver-test.py (something like that)
+`python python-test.py`
 
          * but didn't test (*assert*) anything
          * add this before click - should fail `self.assertTrue(driver.find_element_by_css_selector("small.error").is_displayed())`
 
     * Show the test failing first
 
-    * Fix failure
+    * Fix failure -- assertFalse before click, assertTrue after.
 
-    * [research how you’d get the second element, in case somebody asks -- some kind of css selector?]
-
+    * How would you get the second element? Use find_elements_by_css_selector (see the plural "elements"?) and then use the returned array.
+    
 
 * 5 min - Martin - Take that test, show in Ruby. Make a change, demonstrate running in PhantomJS.
 
@@ -125,7 +131,9 @@ Detailed plan:
 
         * Run and watch Firefox go through it's paces
 
-        * Add code to check for errors before and after click. Like: `assert_true @driver.find_element(:css, "small.error").displayed?`
+        * Add code to check for errors before and after click. Like: `assert_true @driver.find_element(:css, "small.error").displayed?` -- this one fails.
+        
+        * Then change assert_true to assert_false, and do a true after the click. Then it should pass.
 
     * Install PhantomJS:
 
@@ -150,15 +158,9 @@ Detailed plan:
 
     * [https://saucelabs.com/docs/connect](https://saucelabs.com/docs/connect)
 
-    * Run sc.exe -u cdl-dsc -k <cdl-dsc-key>
-
     * Run test "selenium-webdriver-sauce-connect-test.py"
 
     * View results
 
-    * TODO: test code with status updated....
-
     * [Mark will have this all set up in advance, show users the things he configured, then demo the app kicking off locally, running on Sauce, the cool video produced]
-
-    * [Mark will include out how to update Sauce status at end of test]
 
