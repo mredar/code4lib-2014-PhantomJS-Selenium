@@ -13,11 +13,8 @@ class SeleniumWebdriverTest(unittest.TestCase):
         caps['name'] = "Code{4}lib"
         caps['platform'] = "Windows 7"
         caps['version'] = "9"
-###        caps = {    'platform': 'XP',
-###                                    'browserName': 'chrome',
-###                                    'version':'',
-###                                    'name':'TestC4lib'
-###                               }
+        caps['platform'] = "Windows XP"
+        caps['version'] = "7"
         sauce_user = os.environ.get('SAUCE_USER')
         sauce_key = os.environ.get('SAUCE_KEY')
         exe = 'http://' + sauce_user + ':' + sauce_key + '@localhost:4445/wd/hub'
@@ -46,7 +43,8 @@ class SeleniumWebdriverTest(unittest.TestCase):
         driver.find_element_by_xpath("//button[@type='submit']").click()
         driver.find_element_by_id("url").clear()
         driver.find_element_by_id("url").send_keys("http://www.cdlib.org")
-        Select(driver.find_element_by_id("customDropdown1")).select_by_visible_text("Raisins")
+        drive.select(driver.find_element_by_id("customDropdown1")).select_by_visible_text("Raisins")
+        driver.find_element_by_xpath("//button[@type='submit']").click()
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
