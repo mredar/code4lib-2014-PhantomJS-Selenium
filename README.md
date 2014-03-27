@@ -20,12 +20,9 @@ In this double-team live code talk, we’ll explain all that while we demonstrat
 
 * Show the same tests running headless as part of a server-friendly test suite.
 
-* (Wifi permitting) Show the same tests running on a couple different browser/OS combinations on the server cloud at SauceLabs – talking through a tunnel to the local firewalled application.
+* (Wifi permitting) Show the same tests running on a couple different browser/OS combinations on the server cloud at SauceLabs -- talking through a tunnel to the local firewalled application.
 
 Detailed plan:
-
-* Martin needs to translate this doc to Markdown
-
 
 * Mark prep before talk:
 
@@ -43,33 +40,37 @@ Detailed plan:
     
     * <s>Put raw Python test case, and modified Python test case into the git repo.</s>
 
-    * get sauce IE test code ready and check into repository
+    * <s>get sauce IE test code ready and check into repository</s>
 
-    * Immediately before talk: run sauce connnect in terminal
-    terminal at github root ready to run python -m SimpleHTTPServer
-    In Firefox, open localhost:8000, seleniumhq, saucelabs home
-    terminal in Desktop\code4lib ready to run the test files.
-    have gvim open to sauce labs test
+    * Immediately before talk:
+        * run sauce connnect in terminal
+        * terminal at github root ready to run python -m SimpleHTTPServer
+        * In Firefox, open localhost:8000, seleniumhq, saucelabs home
+        * terminal in Desktop\code4lib ready to run the test files with set SAUCE_USER & set SAUCE_KEY ready.
+        * have gvim open to sauce labs test
 
-    So need 3 terminals and 3 webpages open
+    * So need 3 terminals and 3 webpages open
 
 * Martin prep before talk: 
 
-    * See if we can get two mics
+    * Make a page of links that we can show at end of talk
 
-    * Turn off wifi
+    * Resolve merge diffs and push this stuff to github
 
-    * uninstall selenium Ruby bindings:
-`sudo gem uninstall selenium-webdriver`
+    * Immediately before talk:
 
-    * Uninstall PhantomJS:
-`rm ~/bin/phantomjs`
-`rm –r ~/Downloads/phantomjs-1.9.7-macosx
-`
+        * Open phantomjs web page in Chrome
 
-    * Start Python server: `python -m SimpleHTTPServer`
+        * uninstall selenium Ruby bindings:
+    `sudo gem uninstall selenium-webdriver` [need different way in Windows]
 
-* 2 min – Martin talks intro, Mark installs software: Selenium, plus Selenium IDE
+        * Reset the test directory - remove phantomjs.exe, test ruby and python
+          files.
+
+        * Make sure both mics are on.
+
+
+* 2 min - Martin talks intro, Mark installs software: Selenium, plus Selenium IDE
 
     * Start sample app in Python from index.html directory:
          python -m SimpleHTTPServer 8000
@@ -82,7 +83,7 @@ Detailed plan:
     * Start Firefox, go to [http://www.seleniumhq.org/download/](http://www.seleniumhq.org/download/) to show people. But install from local file, then restart Firefox.
 
 
-* 5 min – Show the little test app, write a test using Selenium IDE, run in Firefox, translate to Python, make it actually test something useful.
+* 5 min - Mark - Show the little test app, write a test using Selenium IDE, run in Firefox, translate to Python, make it actually test something useful.
 
     * Start recording in Selenium IDE
 
@@ -100,9 +101,7 @@ Detailed plan:
     
     * Review code. 
 
-        * Change self.baseURL to ""
-
-        * Run test – it should work!
+        * Run test - it should work!
 [need command here] python selenium-webdriver-test.py (something like that)
 
          * but didn't test (*assert*) anything
@@ -112,30 +111,15 @@ Detailed plan:
 
     * Fix failure
 
-    * Add after the first click a check for validation:
-
-        * `self.assertEqual(driver.find_element_by_css_selector("small.error").text, "Passwords must be at least 8 characters with 1 capital letter, 1 number, and one special character.")`
-
-        * [research how you’d get the second element, in case somebody asks… some kind of css selector?]
-
-        * [Try this with assertIn instead]
-
-    * Before click, insert this:
-
-        * `self.assertFalse(driver.find_element_by_css_selector("small.error").is_displayed())`
-
-    * After click, insert this:
-    `self.assertTrue(driver.find_element_by_css_selector("small.error").is_displayed())`
-    
-    * Run again, show success
+    * [research how you’d get the second element, in case somebody asks -- some kind of css selector?]
 
 
-* 5 min – Take that test, show in Python and Ruby. Make a change, demonstrate running in PhantomJS.
+* 5 min - Martin - Take that test, show in Ruby. Make a change, demonstrate running in PhantomJS.
 
     * Make the same test run in Ruby
 
         * Install ruby gem for selenium-webdriver:
-`sudo gem install --local ~/Downloads/selenium-webdriver-2.40.0.gem --no-rdoc --no-ri`
+`gem install --local selenium-webdriver-2.40.0.gem --no-rdoc --no-ri`
 
         * In the exported selenium test, change `${receiver}` to `@driver` (the ide has a bug).
 
@@ -145,13 +129,13 @@ Detailed plan:
 
     * Install PhantomJS:
 
-        * `cd ~/Downloads`
+        * `cd code4lib-talk` (if necessary)
 
-        * `unzip phantomjs-1.9.7-macosx.zip`
+        * `.\phantomjs-1.9.7-windows.zip`
 
-        * `mv phantomjs-1.9.7-macosx/bin/phantomjs ~/bin`
+        * extract all
 
-        * `hash –r`
+        * `copy phantomjs-1.9.7-windows\phantomjs-1.9.7-windows\phantomjs.exe .`
 
         * `phantomjs --version`
 
